@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Mockaroo Clone</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background: #f4f4f4;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Mockaroo Clone</h2>
+
+<button onclick="loadData()">Generate</button>
+
+<table>
+    <thead>
+        <tr>
+            <th>名字</th>
+            <th>名前</th>
+            <th>パスワード</th>
+        </tr>
+    </thead>
+
+    <tbody></tbody>
+</table>
+
+<script>
+function loadData() {
+    fetch("/test")
+        .then(res => res.json())
+        .then(data => {
+            const tbody = document.querySelector("tbody");
+            tbody.innerHTML = "";
+
+            data.forEach(user => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${user.lastName}</td>
+                        <td>${user.firstName}</td>
+                        <td>${user.password}</td>
+                    </tr>
+                `;
+            });
+        });
+}
+</script>
+
+</body>
+</html>
