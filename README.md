@@ -36,4 +36,4 @@ Spring Bootで作ったダミーデータ生成アプリです。
 ---
 
 ## 🚀 デモ
-http://localhost:8080/
+
