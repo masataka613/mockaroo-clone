@@ -38,7 +38,11 @@
 
 <h2>Mockaroo Clone</h2>
 
-<button onclick="loadData()">Generate</button>
+<label>件数:</label>
+<input type="number" id="count" value="100" min="1" max="1000">
+
+
+<button onclick="loadData()">作成</button>
 
 <table>
     <thead>
@@ -54,7 +58,10 @@
 
 <script>
 function loadData() {
-    fetch("/test")
+
+    const count = document.getElementById("count").value;
+
+    fetch("/test?count=" + count)
         .then(res => res.json())
         .then(data => {
             const tbody = document.querySelector("tbody");
